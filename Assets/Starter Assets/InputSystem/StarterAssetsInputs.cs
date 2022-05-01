@@ -12,6 +12,8 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool lattack;
+		public bool hattack;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +47,16 @@ namespace StarterAssets
 		{
 			SprintInput(value.action.ReadValue<float>() == 1);
 		}
+
+		public void OnLightAttack(InputAction.CallbackContext value)
+        {
+			LightAttackinput(value.action.triggered);
+        }
+
+		public void OnHeavyAttack(InputAction.CallbackContext value)
+		{
+			HeavyAttackInput(value.action.triggered);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -69,6 +81,16 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+
+		public void LightAttackinput(bool attackState)
+        {
+			lattack = attackState;
+        }
+
+		public void HeavyAttackInput(bool attackState)
+        {
+			hattack = attackState;
+        }
 
 #if !UNITY_IOS || !UNITY_ANDROID
 
