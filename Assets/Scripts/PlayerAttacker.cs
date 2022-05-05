@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour
 {
-    Animator anim;
+    AnimatorHandler animatorHandler;
 
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        animatorHandler = GetComponentInChildren<AnimatorHandler>();
     }
 
-    public void HandleLightAttack()
+    public void HandleLightAttack(WeaponItem weapon)
     {
-        
+        animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
     }
-    public void HandleHeavyAttack()
+    public void HandleHeavyAttack(WeaponItem weapon)
     {
-
+        animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
     }
 }

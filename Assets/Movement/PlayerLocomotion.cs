@@ -127,7 +127,7 @@ public class PlayerLocomotion : MonoBehaviour
         playerManager.isGrounded = false;
         RaycastHit hit;
         Vector3 origin = myTransform.position;
-        origin.y = groundDetectionRayStartPoint;
+        origin.y += groundDetectionRayStartPoint;
 
         if(Physics.Raycast(origin,myTransform.forward,out hit,0.4f))
         {
@@ -137,7 +137,7 @@ public class PlayerLocomotion : MonoBehaviour
         if(playerManager.isInAir)
         {
             rigidbody.AddForce(-Vector3.up * fallingSpeed);
-            rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
+            rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
         }
 
         Vector3 dir = moveDirection;
@@ -159,6 +159,7 @@ public class PlayerLocomotion : MonoBehaviour
                 {
                     Debug.Log(inAirTimer);
                     animatorHandler.PlayTargetAnimation("Land", true);
+                    inAirTimer = 0;
                 }
                 else
                 {

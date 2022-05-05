@@ -53,6 +53,8 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         inputHandler.rollFlag = false;
+        inputHandler.lAttack = false;
+        inputHandler.hAttack = false;
         if(isInAir)
         {
             playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;

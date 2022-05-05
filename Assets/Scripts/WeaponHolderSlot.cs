@@ -21,7 +21,7 @@ public class WeaponHolderSlot : MonoBehaviour
     {
         if(currentWeaponModel != null)
         {
-            Destroy(currentWeaponModel);
+            Destroy(currentWeaponModel.gameObject);
         }
     }
     public void LoadWeaponModel(WeaponItem weaponItem)
