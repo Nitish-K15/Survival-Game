@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3307474}
   - component: {fileID: 2374578}
   - component: {fileID: 6599268}
+  - component: {fileID: 4418958857894340808}
   m_Layer: 0
   m_Name: Sword00_mesh(Clone)
   m_TagString: Untagged
@@ -93,8 +94,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.058312893, y: 0.6917336, z: 0.14586277}
-  m_Center: {x: 0, y: 0.34673184, z: -0.0041441023}
+  m_Size: {x: 0.058312893, y: 0.5103641, z: 0.14586277}
+  m_Center: {x: 0, y: 0.43741724, z: -0.0041433196}
+--- !u!114 &4418958857894340808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00356738b2dfad41bfe9ccc9c7e91cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181888
 GameObject:
   m_ObjectHideFlags: 0

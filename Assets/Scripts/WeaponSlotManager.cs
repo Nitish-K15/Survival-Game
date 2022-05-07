@@ -9,6 +9,10 @@ public class WeaponSlotManager : MonoBehaviour
     [SerializeField]
     WeaponHolderSlot rightHandSlot;
 
+    DamageCollider leftDamageCollidor;
+    DamageCollider rightDamageCollidor;
+
+
     private void Awake()
     {
         //WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
@@ -30,10 +34,45 @@ public class WeaponSlotManager : MonoBehaviour
         if(isLeft)
         {
             leftHandSlot.LoadWeaponModel(weaponItem);
+            LoadLeftWeaponDamageCollidor();
         }
         else
         {
             rightHandSlot.LoadWeaponModel(weaponItem);
+            LoadRightWeaponDamageCollidor();
         }
     }
+
+    #region Handle Weapon's Damage Collidor
+
+    private void LoadLeftWeaponDamageCollidor()
+    {
+        leftDamageCollidor = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+    }
+
+    private void LoadRightWeaponDamageCollidor()
+    {
+        rightDamageCollidor = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+    }
+
+    public void OpenRightDamageCollidor()
+    {
+        rightDamageCollidor.EnableDamageCollidor();
+    }
+
+    public void OpenLeftDamageCollidor()
+    {
+        leftDamageCollidor.EnableDamageCollidor();
+    }
+
+    public void CloseRightDamageCollidor()
+    {
+        rightDamageCollidor.DisableDamageCollidor();
+    }
+    public void CloseLeftDamageCollidor()
+    {
+        leftDamageCollidor.DisableDamageCollidor();
+    }
+
+    #endregion
 }

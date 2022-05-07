@@ -155,7 +155,7 @@ public class PlayerLocomotion : MonoBehaviour
 
             if(playerManager.isInAir)
             {
-                if(inAirTimer > 0.5f)
+                if(inAirTimer > 0.1f)
                 {
                     Debug.Log(inAirTimer);
                     animatorHandler.PlayTargetAnimation("Land", true);
@@ -163,7 +163,7 @@ public class PlayerLocomotion : MonoBehaviour
                 }
                 else
                 {
-                    animatorHandler.PlayTargetAnimation("Locomotion", false);
+                    animatorHandler.PlayTargetAnimation("Empty", false);
                     inAirTimer = 0;
                 }
 
