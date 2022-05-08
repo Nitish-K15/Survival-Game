@@ -82,6 +82,17 @@ public class AnimatorHandler : MonoBehaviour
         anim.CrossFade(targetAnim, 0.2f);
     }
 
+    public void EnableCombo()
+    {
+        anim.SetBool("canDoCombo", true);
+    }
+
+    public void DisableCombo()
+    {
+        anim.SetBool("canDoCombo", false);
+    }
+
+
     public void CanRotate()
     {
         canRotate = true;

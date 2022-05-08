@@ -13,12 +13,14 @@ public class InputHandler : MonoBehaviour
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
+    PlayerManager playerManager;
 
 
     public bool b__Input;
     public bool lAttack;
     public bool hAttack;
     public bool rollFlag;
+    public bool comboFlag;
     
 
 
@@ -29,6 +31,7 @@ public class InputHandler : MonoBehaviour
     {
         playerAttacker = GetComponent<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
+        playerManager = GetComponent<PlayerManager>();
     }
 
     public void OnEnable()
@@ -84,7 +87,20 @@ public class InputHandler : MonoBehaviour
 
         if(lAttack)
         {
-            playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+            if (playerManager.canDoCombo)
+            {
+                comboFlag = true;
+                playerAttacker.HandleWeaponCombos(playerInventory.rightWeapon);
+                comboFlag = false;
+            }
+            else
+            {
+                if (playerManager.isInteracting)
+                    return;
+                if (playerManager.canDoCombo)
+                    return;
+                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+            }
         }
 
         if(hAttack)

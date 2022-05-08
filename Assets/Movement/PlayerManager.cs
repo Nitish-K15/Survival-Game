@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public bool isInteracting;
     public bool isInAir;
     public bool isGrounded;
+    public bool canDoCombo;
 
     float delta;
 
@@ -33,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         isInteracting = anim.GetBool("isInteracting");
+        canDoCombo = anim.GetBool("canDoCombo");
         delta = Time.deltaTime;
         inputHandler.TickInput(delta);
         playerLocomotion.HandleMovement(delta);
@@ -42,6 +44,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         float delta = Time.deltaTime;
         if (cameraHandler != null)
         {
