@@ -144,7 +144,7 @@ namespace RPGCharacterAnims
             rpgCharacterController.SetHandler(HandlerTypes.Jump, new Jump(this));
             rpgCharacterController.SetHandler(HandlerTypes.Knockback, new Knockback(this));
             rpgCharacterController.SetHandler(HandlerTypes.Knockdown, new Knockdown(this));
-            rpgCharacterController.SetHandler(HandlerTypes.Move, new Move(this));
+            //rpgCharacterController.SetHandler(HandlerTypes.Move, new Move());
 		}
 
         private void Start()
