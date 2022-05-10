@@ -136,8 +136,9 @@ public class PlayerLocomotion : MonoBehaviour
 
         if(playerManager.isInAir)
         {
-            rigidbody.AddForce(-Vector3.up * fallingSpeed);
-            rigidbody.AddForce(moveDirection * fallingSpeed  / 5f);
+            inAirTimer += Time.deltaTime;
+            rigidbody.AddForce(-Vector3.up * fallingSpeed *inAirTimer);
+            rigidbody.AddForce(moveDirection * fallingSpeed  / 10f);
         }
 
         Vector3 dir = moveDirection;
@@ -182,7 +183,6 @@ public class PlayerLocomotion : MonoBehaviour
                 {
                     animatorHandler.PlayTargetAnimation("Falling", true);
                 }
-
                 Vector3 vel = rigidbody.velocity;
                 vel.Normalize();
                 rigidbody.velocity = vel * (movementSpeed / 2);

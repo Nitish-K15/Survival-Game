@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    bool isPerformingAction;
+    public bool isPerformingAction;
     EnemyLocomotionManager enemyLocomotion;
 
     [Header("AI Settings")]
@@ -20,6 +20,11 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+    }
+
+    private void FixedUpdate()
+    {
         HandleCurrentAction();
     }
     private void HandleCurrentAction()
@@ -27,6 +32,10 @@ public class EnemyManager : MonoBehaviour
         if(enemyLocomotion.currentTarget == null)
         {
             enemyLocomotion.HandleDetection();
+        }
+        else
+        {
+            enemyLocomotion.HandleMoveToTarget();
         }
     }
 }

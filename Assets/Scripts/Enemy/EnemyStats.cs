@@ -9,7 +9,7 @@ public class EnemyStats : CharacterStats
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
