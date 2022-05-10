@@ -8,7 +8,7 @@ public class EnemyAnimatorManager : AnimatorManager
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+        enemyLocomotionManager = GetComponentInParent<EnemyLocomotionManager>();
     }
 
     private void OnAnimatorMove()

@@ -10,9 +10,6 @@ public class EnemyLocomotionManager : MonoBehaviour
     NavMeshAgent navMeshAgent;
     public Rigidbody enemyRigidbody;
 
-    public LayerMask detectionLayer;
-    CharacterStats characterStats;
-    public CharacterStats currentTarget;
 
     public float distanceFromTarget;
     public float stoppingDistance = 0.5f;
@@ -31,25 +28,7 @@ public class EnemyLocomotionManager : MonoBehaviour
         enemyRigidbody.isKinematic = false;
     }
 
-    public void HandleDetection()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
 
-        for(int i = 0;i < colliders.Length;i++)
-        {
-            characterStats = colliders[i].GetComponent<CharacterStats>();
-
-            if(characterStats!=null)
-            {
-                Vector3 targetDirection = characterStats.transform.position - transform.position;
-                float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-                if(viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
-                {
-                    currentTarget = characterStats;
-                }
-            }
-        }
-    }
 
     public void HandleMoveToTarget()
     {
@@ -76,8 +55,9 @@ public class EnemyLocomotionManager : MonoBehaviour
 
         HandleRotateTowardsTarget();
 
-        navMeshAgent.transform.localPosition = Vector3.zero;
-        navMeshAgent.transform.localRotation = Quaternion.identity;
+        //avMeshAgent.transform.localPosition = Vector3.zero;
+        navMeshAgent.nextPosition = transform.position;
+        //navMeshAgent.transform.localRotation = Quaternion.identity;
     }
 
     private void HandleRotateTowardsTarget()

@@ -143,7 +143,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         Vector3 dir = moveDirection;
         dir.Normalize();
-        origin = origin + dir * groundDirectionRayDistance;
+        origin += dir * groundDirectionRayDistance;
         targetPosition = myTransform.position;
 
         Debug.DrawRay(origin, -Vector3.up * minimumFallDistance, Color.red, 0.1f, false);

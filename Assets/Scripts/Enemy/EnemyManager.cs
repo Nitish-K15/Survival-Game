@@ -6,6 +6,13 @@ public class EnemyManager : MonoBehaviour
 {
     public bool isPerformingAction;
     EnemyLocomotionManager enemyLocomotion;
+    EnemyAnimatorManager enemyAnimatorManager;
+
+    public CharacterStats characterStats;
+    public CharacterStats currentTarget;
+
+    EnemyStats enemyStats;
+    public State currentState;
 
     [Header("AI Settings")]
     public float detectionRadius = 20;
@@ -15,6 +22,8 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         enemyLocomotion = GetComponent<EnemyLocomotionManager>();
+        enemyStats = GetComponent<EnemyStats>();
+        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
     }
 
     // Update is called once per frame
@@ -25,17 +34,23 @@ public class EnemyManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleCurrentAction();
+        HandleStateMachine();
     }
-    private void HandleCurrentAction()
+    private void HandleStateMachine()
     {
-        if(enemyLocomotion.currentTarget == null)
+        if(currentState != null)
         {
-            enemyLocomotion.HandleDetection();
+            State nextstate = currentState.Tick(this, enemyStats, enemyAnimatorManager);
+            if(nextstate!=null)
+            {
+                SwitchToNextState(nextstate);
+            }
         }
-        else
-        {
-            enemyLocomotion.HandleMoveToTarget();
-        }
+
+    }
+
+    private void SwitchToNextState(State state)
+    {
+        currentState = state;
     }
 }

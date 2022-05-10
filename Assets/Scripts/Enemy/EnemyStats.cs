@@ -27,7 +27,7 @@ public class EnemyStats : CharacterStats
     public void TakeDamage(int damage)
     {
         currentHealth = currentHealth - damage;
-        animator.Play("Damage");
+        animator.Play("TakeDamage");
         if (currentHealth <= 0)
         {
             currentHealth = 0;
