@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class CombatStanceState : State
 {
+
+    public AttackState attackState;
+    public PursueTargetState pursueTargetState;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        throw new System.NotImplementedException();
+        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentState.transform.position, enemyManager.transform.position);
+        if (enemyManager.currentRecoveryTime <= 0 && enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
+        {
+            return attackState;
+        }
+        else //if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
+        {
+            return pursueTargetState;
+        }
+        //else
+        //{
+        //    return this;
+        //}
     }
 }

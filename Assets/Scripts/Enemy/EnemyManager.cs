@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
     public bool isPerformingAction;
-    EnemyLocomotionManager enemyLocomotion;
     EnemyAnimatorManager enemyAnimatorManager;
 
     public CharacterStats characterStats;
@@ -13,17 +13,34 @@ public class EnemyManager : MonoBehaviour
 
     EnemyStats enemyStats;
     public State currentState;
+    public NavMeshAgent navMeshAgent;
+    public Rigidbody enemyRigidbody;
+
+    public float distanceFromTarget;
+    public float rotationSpeed = 15;
+
+    public float maximumAttackRange = 1.5f;
+
+    public float currentRecoveryTime;
 
     [Header("AI Settings")]
     public float detectionRadius = 20;
     public float minimumDetectionAngle = -50;
     public float maximumDetectionAngle = 50;
+    public float viewableAngle;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        enemyLocomotion = GetComponent<EnemyLocomotionManager>();
         enemyStats = GetComponent<EnemyStats>();
-        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+        enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+       // enemyRigidbody = GetComponentInChildren<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        navMeshAgent.enabled = false;
+        //enemyRigidbody.isKinematic = false;
     }
 
     // Update is called once per frame

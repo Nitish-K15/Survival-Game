@@ -5,7 +5,7 @@ using UnityEngine;
 public class IdleState : State
 {
     public LayerMask detectionLayer;
-    PursueTargetState pursueTargetState;
+    public PursueTargetState pursueTargetState;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius,detectionLayer);
