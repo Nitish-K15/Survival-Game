@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
     EnemyStats enemyStats;
     public State currentState;
     public NavMeshAgent navMeshAgent;
-    public Rigidbody enemyRigidbody;
+    //public Rigidbody enemyRigidbody;
 
     public float distanceFromTarget;
     public float rotationSpeed = 15;

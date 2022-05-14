@@ -58,6 +58,8 @@ public class PlayerManager : MonoBehaviour
         inputHandler.rollFlag = false;
         inputHandler.lAttack = false;
         inputHandler.hAttack = false;
+        inputHandler.d_Pad_Right = false;
+        inputHandler.d_Pad_Left = false;
         if(isInAir)
         {
             playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;

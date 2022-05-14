@@ -57,6 +57,7 @@ public class PursueTargetState : State
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
+            StartCoroutine(ResetVariables(enemyManager));
         }
 
         else
@@ -70,5 +71,12 @@ public class PursueTargetState : State
             enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
         }
 
+    }
+
+    IEnumerator ResetVariables(EnemyManager enemyManager)
+    {
+        yield return new WaitForSeconds(enemyManager.currentRecoveryTime);
+        enemyManager.currentRecoveryTime = 0;
+        enemyManager.isPerformingAction = false;
     }
 }

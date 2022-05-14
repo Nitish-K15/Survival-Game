@@ -21,6 +21,8 @@ public class InputHandler : MonoBehaviour
     public bool hAttack;
     public bool rollFlag;
     public bool comboFlag;
+    public bool d_Pad_Left;
+    public bool d_Pad_Right;
     
 
 
@@ -59,6 +61,7 @@ public class InputHandler : MonoBehaviour
         MoveInput(delta);
         HandleRollingInput(delta);
         HandleAttackInput(delta);
+        HandleQuickSlotInput();
     }
 
     private void MoveInput(float delta)
@@ -119,6 +122,21 @@ public class InputHandler : MonoBehaviour
                     return;
                 playerAttacker.HandleHeavyAttack(playerInventory.leftWeapon);
             }
+        }
+    }
+
+    private void HandleQuickSlotInput()
+    {
+        inputActions.PlayerActions.DPadRight.performed += i => d_Pad_Right = true;
+        inputActions.PlayerActions.DPadLeft.performed += i => d_Pad_Left = true;
+        if(d_Pad_Right)
+        {
+            playerInventory.ChangeRightWeapon();
+        }
+
+        else if(d_Pad_Left)
+        {
+            //playerInventory.ChangeLeftWeapon();
         }
     }
 }
