@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : InventoryItemBase
+public class Axe : InventoryItemBase
 {
     public override string Name
     {
         get
         {
-            return "Sword";
+            return "Axe";
         }
     }
 
