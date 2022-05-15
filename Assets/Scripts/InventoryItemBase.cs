@@ -12,6 +12,16 @@ public class InventoryItemBase : MonoBehaviour,IInventory
         }
     }
 
+    public WeaponItem _objectItem = null;
+
+    public WeaponItem objectItem
+    {
+        get
+        {
+            return _objectItem;
+        }
+    }
+ 
     public Sprite _image = null;
 
     public virtual void OnUse()
@@ -31,7 +41,7 @@ public class InventoryItemBase : MonoBehaviour,IInventory
 
     public virtual void OnPickup()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public virtual void OnDrop()

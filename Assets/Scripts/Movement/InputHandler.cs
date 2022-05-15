@@ -12,7 +12,8 @@ public class InputHandler : MonoBehaviour
 
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
-    PlayerInventory playerInventory;
+    //PlayerInventory playerInventory;
+    InventoryManager inventoryManager;
     PlayerManager playerManager;
 
 
@@ -32,7 +33,7 @@ public class InputHandler : MonoBehaviour
     private void Awake()
     {
         playerAttacker = GetComponent<PlayerAttacker>();
-        playerInventory = GetComponent<PlayerInventory>();
+        inventoryManager = GetComponent<InventoryManager>();
         playerManager = GetComponent<PlayerManager>();
     }
 
@@ -61,7 +62,7 @@ public class InputHandler : MonoBehaviour
         MoveInput(delta);
         HandleRollingInput(delta);
         HandleAttackInput(delta);
-        HandleQuickSlotInput();
+        //HandleQuickSlotInput();
     }
 
     private void MoveInput(float delta)
@@ -93,7 +94,7 @@ public class InputHandler : MonoBehaviour
             if (playerManager.canDoCombo)
             {
                 comboFlag = true;
-                playerAttacker.HandleWeaponCombos(playerInventory.rightWeapon);
+                playerAttacker.HandleWeaponCombos(inventoryManager.weapon);
                 comboFlag = false;
             }
             else
@@ -102,7 +103,7 @@ public class InputHandler : MonoBehaviour
                     return;
                 if (playerManager.canDoCombo)
                     return;
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                playerAttacker.HandleLightAttack(inventoryManager.weapon);
             }
         }
 
@@ -111,7 +112,7 @@ public class InputHandler : MonoBehaviour
             if (playerManager.canDoCombo)
             {
                 comboFlag = true;
-                playerAttacker.HandleWeaponCombos(playerInventory.rightWeapon);
+                playerAttacker.HandleWeaponCombos(inventoryManager.weapon);
                 comboFlag = false;
             }
             else
@@ -120,23 +121,23 @@ public class InputHandler : MonoBehaviour
                     return;
                 if (playerManager.canDoCombo)
                     return;
-                playerAttacker.HandleHeavyAttack(playerInventory.leftWeapon);
+                playerAttacker.HandleHeavyAttack(inventoryManager.weapon);
             }
         }
     }
 
-    private void HandleQuickSlotInput()
-    {
-        inputActions.PlayerActions.DPadRight.performed += i => d_Pad_Right = true;
-        inputActions.PlayerActions.DPadLeft.performed += i => d_Pad_Left = true;
-        if(d_Pad_Right)
-        {
-            playerInventory.ChangeRightWeapon();
-        }
+    //private void HandleQuickSlotInput()
+    //{
+    //    inputActions.PlayerActions.DPadRight.performed += i => d_Pad_Right = true;
+    //    inputActions.PlayerActions.DPadLeft.performed += i => d_Pad_Left = true;
+    //    if(d_Pad_Right)
+    //    {
+    //        playerInventory.ChangeRightWeapon();
+    //    }
 
-        else if(d_Pad_Left)
-        {
-            //playerInventory.ChangeLeftWeapon();
-        }
-    }
+    //    else if(d_Pad_Left)
+    //    {
+    //        //playerInventory.ChangeLeftWeapon();
+    //    }
+    //}
 }

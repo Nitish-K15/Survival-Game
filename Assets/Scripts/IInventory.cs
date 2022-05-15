@@ -8,6 +8,8 @@ public interface IInventory
    string Name { get; }
    Sprite image { get; }
 
+    public WeaponItem objectItem { get; }
+
     void OnPickup();
 
     void OnDrop();
