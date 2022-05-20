@@ -21,6 +21,15 @@ public class InventoryItemBase : MonoBehaviour,IInventory
             return _objectItem;
         }
     }
+
+    public bool _isWeapon = false;
+    public bool isWeapon
+    {
+        get
+        {
+            return _isWeapon;
+        }
+    }
  
     public Sprite _image = null;
 

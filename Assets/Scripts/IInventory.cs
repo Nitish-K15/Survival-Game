@@ -8,6 +8,8 @@ public interface IInventory
    string Name { get; }
    Sprite image { get; }
 
+    bool isWeapon { get; }
+
     public WeaponItem objectItem { get; }
 
     void OnPickup();

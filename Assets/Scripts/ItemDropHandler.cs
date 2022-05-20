@@ -15,7 +15,7 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
             if (!RectTransformUtility.RectangleContainsScreenPoint(invPanel, Input.mousePosition))
             {
                 IInventory item = eventData.pointerDrag.gameObject.GetComponent<ItemDragHandler>().item;
-                if (item != null)
+                if (!item.isWeapon)
                 {
                     inventory.RemoveItem(item);
                     item.OnDrop();

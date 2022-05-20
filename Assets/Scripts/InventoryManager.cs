@@ -11,10 +11,15 @@ public class InventoryManager : MonoBehaviour
     public WeaponItem weapon;
     IInventory item;
 
-    private void Start()
+    private void Awake()
     {
         inventory.ItemUsed += Inventory_ItemUsed;
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+    }
+
+    private void Start()
+    {
+        weaponSlotManager.LoadWeaponOnSlot(weapon, false);
     }
 
     private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
@@ -25,8 +30,11 @@ public class InventoryManager : MonoBehaviour
 
         //goItem.transform.parent = hand.transform;
         //goItem.transform.localPosition = Vector3.zero;
-        weapon = e.Item.objectItem;
-        weaponSlotManager.LoadWeaponOnSlot(e.Item.objectItem, false);
+        if (e.Item.isWeapon)
+        {
+            weapon = e.Item.objectItem;
+            weaponSlotManager.LoadWeaponOnSlot(e.Item.objectItem, false);
+        }
 
     }
 
