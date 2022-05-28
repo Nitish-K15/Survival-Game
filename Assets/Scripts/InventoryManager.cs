@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     WeaponSlotManager weaponSlotManager;
     public GameObject hand;
     public WeaponItem weapon;
+    public GameObject inventoryPanel;
     IInventory item;
 
     private void Awake()

@@ -24,6 +24,7 @@ public class InputHandler : MonoBehaviour
     public bool comboFlag;
     public bool d_Pad_Left;
     public bool d_Pad_Right;
+    public bool inventory;
     
 
 
@@ -62,6 +63,7 @@ public class InputHandler : MonoBehaviour
         MoveInput(delta);
         HandleRollingInput(delta);
         HandleAttackInput(delta);
+        HandleInventoryInput();
         //HandleQuickSlotInput();
     }
 
@@ -126,6 +128,19 @@ public class InputHandler : MonoBehaviour
         }
     }
 
+    private void HandleInventoryInput()
+    {
+        inputActions.PlayerActions.Inventory.performed += i => inventory = !inventory;
+
+        if(inventory)
+        {
+            inventoryManager.inventoryPanel.SetActive(true);
+        }
+        else
+        {
+            inventoryManager.inventoryPanel.SetActive(false);
+        }
+    }
     //private void HandleQuickSlotInput()
     //{
     //    inputActions.PlayerActions.DPadRight.performed += i => d_Pad_Right = true;
