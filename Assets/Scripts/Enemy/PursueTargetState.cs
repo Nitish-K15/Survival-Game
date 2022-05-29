@@ -24,6 +24,7 @@ public class PursueTargetState : State
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
+
         }
 
         HandleRotateTowardsTarget(enemyManager);

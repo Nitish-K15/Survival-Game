@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
 
     public float maximumAttackRange = 1.5f;
 
-    public float currentRecoveryTime;
+    public float currentRecoveryTime = 0;
 
     [Header("AI Settings")]
     public float detectionRadius = 20;
