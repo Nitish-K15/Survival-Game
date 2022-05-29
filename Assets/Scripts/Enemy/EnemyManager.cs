@@ -46,11 +46,12 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        HandleRecoveryTimer();
     }
 
     private void FixedUpdate()
     {
+        if(enemyStats.currentHealth != 0)
         HandleStateMachine();
     }
     private void HandleStateMachine()
@@ -69,5 +70,20 @@ public class EnemyManager : MonoBehaviour
     private void SwitchToNextState(State state)
     {
         currentState = state;
+    }
+
+    private void HandleRecoveryTimer()
+    {
+        if(currentRecoveryTime > 0)
+        {
+            currentRecoveryTime -= Time.deltaTime;
+        }
+        if(isPerformingAction)
+        {
+            if(currentRecoveryTime <= 0)
+            {
+                isPerformingAction = false;
+            }
+        }
     }
 }

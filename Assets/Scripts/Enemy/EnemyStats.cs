@@ -9,7 +9,7 @@ public class EnemyStats : CharacterStats
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -26,12 +26,15 @@ public class EnemyStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
-        currentHealth = currentHealth - damage;
-        animator.Play("TakeDamage");
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            currentHealth = 0;
-            animator.Play("Death");
+            currentHealth = currentHealth - damage;
+            animator.Play("TakeDamage");
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                animator.Play("Death");
+            }
         }
     }
 }
