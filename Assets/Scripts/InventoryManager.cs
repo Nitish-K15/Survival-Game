@@ -10,12 +10,14 @@ public class InventoryManager : MonoBehaviour
     public GameObject hand;
     public WeaponItem weapon;
     public GameObject inventoryPanel;
+    public PlayerStats playerStats;
     IInventory item;
 
     private void Awake()
     {
         inventory.ItemUsed += Inventory_ItemUsed;
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Start()
@@ -35,6 +37,11 @@ public class InventoryManager : MonoBehaviour
         {
             weapon = e.Item.objectItem;
             weaponSlotManager.LoadWeaponOnSlot(e.Item.objectItem, false);
+        }
+        else
+        {
+            playerStats.HealDamage(10);
+            inventory.RemoveItem(e.Item);
         }
 
     }

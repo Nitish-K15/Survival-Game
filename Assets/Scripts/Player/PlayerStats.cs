@@ -41,4 +41,12 @@ public class PlayerStats : CharacterStats
             }
         }
     }
+
+    public void HealDamage(int value)
+    {
+        currentHealth = currentHealth + value;
+        healthBar.SetCurrentHealth(currentHealth);
+        if (currentHealth >= maxHealth)
+            currentHealth = maxHealth;
+    }
 }
