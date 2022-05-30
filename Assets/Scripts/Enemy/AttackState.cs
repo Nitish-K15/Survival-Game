@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    public CombatStanceState combatStanceState;
+    public PursueTargetState combatStanceState;
     public EnemyAttackAction[] enemyAttacks;
     public EnemyAttackAction currentattack;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)

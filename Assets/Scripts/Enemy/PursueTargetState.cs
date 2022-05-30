@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PursueTargetState : State
 {
-    public CombatStanceState combatStanceState;
+    public AttackState combatStanceState;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyManager.isPerformingAction)
@@ -58,7 +58,6 @@ public class PursueTargetState : State
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
-            StartCoroutine(ResetVariables(enemyManager));
         }
 
         else
@@ -74,10 +73,4 @@ public class PursueTargetState : State
 
     }
 
-    IEnumerator ResetVariables(EnemyManager enemyManager)
-    {
-        yield return new WaitForSeconds(enemyManager.currentRecoveryTime);
-        enemyManager.currentRecoveryTime = 0;
-        enemyManager.isPerformingAction = false;
-    }
 }
