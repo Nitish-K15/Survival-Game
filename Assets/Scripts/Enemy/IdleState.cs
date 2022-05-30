@@ -26,7 +26,7 @@ public class IdleState : State
             }
         }
 
-        if(enemyManager.currentTarget != null)
+        if(enemyManager.currentTarget != null || enemyStats.isAttacked == true)
         {
             return pursueTargetState;
         }

@@ -6,6 +6,7 @@ public class EnemyStats : CharacterStats
 {
 
     Animator animator;
+    public bool isAttacked;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class EnemyStats : CharacterStats
     {
         if (currentHealth > 0)
         {
+            isAttacked = true;
             currentHealth = currentHealth - damage;
             animator.Play("TakeDamage");
             if (currentHealth <= 0)

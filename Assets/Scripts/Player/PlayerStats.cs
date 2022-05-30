@@ -29,13 +29,16 @@ public class PlayerStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
-        currentHealth = currentHealth - damage;
-        healthBar.SetCurrentHealth(currentHealth);
-        animatorHandler.PlayTargetAnimation("TakeDamage", true);
-        if(currentHealth<=0)
+        if (currentHealth > 0)
         {
-            currentHealth = 0;
-            animatorHandler.PlayTargetAnimation("Death", true);
+            currentHealth = currentHealth - damage;
+            healthBar.SetCurrentHealth(currentHealth);
+            animatorHandler.PlayTargetAnimation("TakeDamage", true);
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                animatorHandler.PlayTargetAnimation("Death", true);
+            }
         }
     }
 }

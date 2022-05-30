@@ -50219,7 +50219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ccf1a0722aafc44b7b051300b91daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 7687487076777294682}
+  combatStanceState: {fileID: 0}
   enemyAttacks:
   - {fileID: 11400000, guid: fd3065a2ed2cf5f4da9e46ea04e7976b, type: 2}
   currentattack: {fileID: 0}
@@ -50283,8 +50283,8 @@ MonoBehaviour:
   maximumAttackRange: 1.5
   currentRecoveryTime: 0
   detectionRadius: 20
-  minimumDetectionAngle: -50
-  maximumDetectionAngle: 50
+  minimumDetectionAngle: -100
+  maximumDetectionAngle: -100
   viewableAngle: 0
 --- !u!114 &7687487076733528409
 MonoBehaviour:
@@ -50301,6 +50301,7 @@ MonoBehaviour:
   healthLevel: 10
   maxHealth: 0
   currentHealth: 0
+  isAttacked: 0
 --- !u!195 &7687487076733528407
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -50315,7 +50316,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -50333,10 +50334,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.3667755
+  m_Radius: 0.56720436
   m_Height: 1.5795403
   m_Direction: 1
-  m_Center: {x: -0.005722046, y: 0.88503647, z: 0}
+  m_Center: {x: 0.05922556, y: 0.88503647, z: 0}
 --- !u!1 &7687487076777294684
 GameObject:
   m_ObjectHideFlags: 0
@@ -50427,7 +50428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866efa6effecaba4883b1216ebf162ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 7687487076777294682}
+  combatStanceState: {fileID: 0}
 --- !u!1 &7687487077760045313
 GameObject:
   m_ObjectHideFlags: 0
