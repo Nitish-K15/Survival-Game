@@ -1,10 +1,10 @@
 // Render pipelines that utilize the DynamicResolutionHandler class can benefit from a simpler, more streamlined codepath.
 // Prefer to leave this defined if possible, comment out only if your render pipeline does not support the feature.
 // At the time of this script's last update, HDRP supports the DRH while URP and Built-in do not.
-#define PIPELINE_IMPLEMENTS_DRH
+//#define PIPELINE_IMPLEMENTS_DRH
 
 // Uncomment this for debugging tools.
-// #define ENABLE_DYNAMIC_RESOLUTION_DEBUG
+#define ENABLE_DYNAMIC_RESOLUTION_DEBUG
 
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -35,7 +35,7 @@ public class DynamicResolution : MonoBehaviour
     // If your pipeline utilizes the DRH then the min and max scale factors should be defined by a separate config asset.
     // If not, then these values provide you that configuration.
 #if !PIPELINE_IMPLEMENTS_DRH
-    const float MinScaleFactor = 0.5f;
+    const float MinScaleFactor = 0.25f;
     const float MaxScaleFactor = 1.0f;
 #endif
     // END TWEAKABLES BLOCK
