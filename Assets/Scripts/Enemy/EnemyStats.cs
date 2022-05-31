@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
 
     Animator animator;
+    public bool ifBoss = false;
+    public GameObject chest;
     public bool isAttacked;
 
     private void Awake()
@@ -37,6 +40,8 @@ public class EnemyStats : CharacterStats
                 currentHealth = 0;
                 animator.Play("Death");
                 Destroy(gameObject, 3f);
+                if (ifBoss)
+                    SceneManager.LoadScene(2);
             }
         }
     }
