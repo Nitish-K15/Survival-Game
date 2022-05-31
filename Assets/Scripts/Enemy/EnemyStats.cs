@@ -36,6 +36,7 @@ public class EnemyStats : CharacterStats
             {
                 currentHealth = 0;
                 animator.Play("Death");
+                Destroy(gameObject, 3f);
             }
         }
     }

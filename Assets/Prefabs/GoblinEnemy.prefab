@@ -50283,8 +50283,8 @@ MonoBehaviour:
   maximumAttackRange: 1.5
   currentRecoveryTime: 0
   detectionRadius: 20
-  minimumDetectionAngle: -100
-  maximumDetectionAngle: -100
+  minimumDetectionAngle: 0
+  maximumDetectionAngle: 360
   viewableAngle: 0
 --- !u!114 &7687487076733528409
 MonoBehaviour:
@@ -50504,8 +50504,8 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7687487078010357458}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
+  m_IsTrigger: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1.633646
   m_Direction: 1
