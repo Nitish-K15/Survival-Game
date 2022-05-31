@@ -7,6 +7,7 @@ public class PlayerStats : CharacterStats
    
 
     public HealthBar healthBar;
+    public GameObject gameOverPanel;
     AnimatorHandler animatorHandler;
 
     private void Awake()
@@ -38,6 +39,7 @@ public class PlayerStats : CharacterStats
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("Death", true);
+                gameOverPanel.SetActive(true);
             }
         }
     }
